@@ -74,7 +74,7 @@ fc-cache -f -v
 | `Super + 1-0` | Switch to workspace 1-10 |
 | `Super + Shift + 1-0` | Move active window to workspace 1-10 |
 
-##Theme
+## Theme
 
 This configuration features a purple-themed color scheme with semi-transparent elements for a modern look. The theme is consistent across all components including the bar, application launcher, and logout menu.
 
@@ -144,8 +144,8 @@ Wofi is configured with:
 ## Screenshots
 
 ![Desktop](screenshots/desktop.png)
-![Application Launcher](wofi.png)
-![Logout Menu](wlogout.png)
+![Application Launcher](screenshots/wofi.png)
+![Logout Menu](screenshots/wlogout.png)
 
 ## Credits
 
