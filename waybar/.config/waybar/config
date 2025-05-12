@@ -1,0 +1,117 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 8,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    
+    "modules-left": [
+	"hyprland/workspaces",
+        "hyprland/window"
+    ],
+    
+    "modules-center": [
+        "clock"
+    ],
+    
+    "modules-right": [
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "battery",
+	"custom/wlogout",
+        "tray"
+    ],
+    
+
+    "hyprland/window": {
+        "format": "❤  {}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "hyprland/workspaces": {
+   	 "format": "{name}",
+   	 "on-click": "activate",
+ 	 "show-special": false,
+ 	 "persistent-workspaces": [],
+ 	 "active-only": true
+   },
+    
+    "clock": {
+        "format": "{:%H:%M}",
+    },
+    
+    "cpu": {
+        "interval": 1,
+        "format": "\uf4bc {usage}%",
+        "on-click": "kitty -e htop",
+	"tooltip": false
+    },
+    
+    "memory": {
+        "interval": 1,
+        "format": "\uefc5 {percentage}%",
+        "format-alt": "\uefc5 {used:0.1f}GB",
+        "tooltip": false
+    },
+    
+    "network": {
+        "format-wifi": "\udb81\udda9 {essid}",
+        "format-ethernet": "\uef44 {ifname}",
+        "format-disconnected": "\udb81\uddaa Disconnected",
+        "format-linked": " {ifname} (No IP)",
+        "tooltip-format": " {ifname}\nIP: {ipaddr}/{cidr}\nSignal: {signalStrength}%\nFreq: {frequency}MHz",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "kitty -e nmtui"
+    },
+ 
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\udb81\udd81 Muted",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "\udb81\udd81 Muted",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+	"tooltip": false,
+        "format-icons": {
+            "headphone": "\udb80\udecb",
+            "headset": "\udb80\udece",
+            "phone": "\uf2a0",
+            "default": ["\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    
+    "battery": {
+        "interval": 1,
+        "states": {
+            "good": 50,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "\udb80\udc84 {capacity}%",
+        "format-plugged": "\udb81\udea5 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82", "\udb80\udc79"]
+    },
+    
+
+    "custom/wlogout": {
+	"format": "\udb81\udc25",
+	"on-click": "wlogout",
+	"tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}
