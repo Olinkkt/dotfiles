@@ -1,0 +1,71 @@
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font", sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+window {
+    background: rgba(26, 27, 38, 0.85);
+    border-radius: 12px;
+    border: 2px solid #B39DDB;
+}
+
+#input {
+    margin: 8px;
+    padding: 8px 12px;
+    background: rgba(36, 37, 48, 0.8);
+    border: 2px solid #CE93D8;
+    border-radius: 8px;
+    color: #c0caf5;
+}
+
+#input:focus {
+    border-color: #B39DDB;
+}
+
+#inner-box {
+    margin: 5px;
+    background: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    padding: 10px;
+    background: transparent;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#text {
+    margin: 5px;
+    padding: 5px;
+    color: #c0caf5;
+}
+
+#entry {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+#entry:selected {
+    background: rgba(179, 157, 219, 0.2);
+    border: 1px solid #CE93D8;
+    border-radius: 8px;
+}
+
+#entry:selected #text {
+    color: #F48FB1;
+    font-weight: bold;
+}
+
+/* Unselected entry with cursor hovering over it */
+#entry:hover {
+    background: rgba(179, 157, 219, 0.1);
+}
+
+/* Selected entry with cursor hovering over it */
+#entry:selected.activatable:hover {
+    background-color: rgba(206, 147, 216, 0.3);
+}
