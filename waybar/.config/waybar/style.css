@@ -1,0 +1,131 @@
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all 0.3s ease;
+}
+
+window#waybar {
+    background: transparent;
+    color: #c0caf5;
+}
+
+#window,
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray {
+    background: rgba(26, 27, 38, 0.85);
+    border-radius: 8px;
+    margin: 4px 0;
+    padding: 0 10px;
+    color: #c0caf5;
+}
+
+
+/* Window */
+#window {
+    background: rgba(26, 27, 38, 0.85);
+    margin-left: 0;
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: #D1C4E9;
+}
+
+#workspaces {
+	background: rgba(26, 27, 38, 0.85);
+	margin-left: 0;
+	margin-right: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+	color: #D1C4E9;
+}
+
+/* Clock */
+#clock {
+    background: rgba(26, 27, 38, 0.85);
+    font-weight: bold;
+    color: #B39DDB;
+}
+
+/* System modules */
+#cpu {
+    background: rgba(26, 27, 38, 0.85);
+    color: #B5A7D9;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#memory {
+    background: rgba(26, 27, 38, 0.85);
+    color: #F48FB1;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#network {
+    background: rgba(26, 27, 38, 0.85);
+    color: #B39DDB;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#network.disconnected {
+    color: #F44336;
+}
+
+#pulseaudio {
+    background: rgba(26, 27, 38, 0.85);
+    color: #CE93D8;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#pulseaudio.muted {
+    color: #F44336;
+}
+
+#battery {
+    background: rgba(26, 27, 38, 0.85);
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#battery.good {
+    color: #B3E5FC;
+}
+
+#battery.warning {
+    color: #FFEB3B;
+}
+
+#battery.critical {
+    color: #F44336;
+}
+
+#battery.charging {
+    color: #80D6FF;
+}
+
+#custom-wlogout {
+    color: #B3E5FC;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: 8px;
+}
+
+#tray {
+    background: rgba(26, 27, 38, 0.85);
+    padding-left: 10px;
+    padding-right: 10px;
+}
