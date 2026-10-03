@@ -1,0 +1,26 @@
+#!/bin/bash
+# Usage: lid-toggle           -> toggle
+#        lid-toggle status    -> print an icon if awake mode is on (for waybar)
+
+PIDFILE="${XDG_RUNTIME_DIR:-/tmp}/lid-inhibit.pid"
+
+is_on() {
+    [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null
+}
+
+if [ "$1" = "status" ]; then
+    is_on && printf '\uf0f4' || printf ''
+    exit 0
+fi
+
+if is_on; then
+    kill "$(cat "$PIDFILE")"
+    rm -f "$PIDFILE"
+else
+    systemd-inhibit --what=handle-lid-switch --who=lid-toggle \
+        --why="Lid awake mode" sleep infinity &
+    echo $! > "$PIDFILE"
+    disown
+fi
+
+pkill -RTMIN+8 waybar 2>/dev/null
