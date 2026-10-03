@@ -1,157 +1,158 @@
-#  Hyprland Desktop Configuration
+#  macOS-Inspired Hyprland Desktop
 
-A minimal, elegant, and functional Hyprland desktop configuration with a purple-themed aesthetic for Linux.
+A clean, elegant, and modern Hyprland rice designed to bring the refined aesthetic and fluid experience of **macOS Sonoma** to Arch Linux.
 
-##  Overview
+Featuring frosted glassmorphism, native-style window traffic lights, a centered top menu bar, a floating bottom dock, and a Spotlight-styled app launcher.
 
-This repository contains my personal Hyprland Wayland compositor configuration along with complementary tools to create a cohesive desktop environment.
+---
 
-### Components
+## ✨ Features & Aesthetic Highlights
 
-- **[Hyprland](https://hyprland.org/)** - A dynamic tiling Wayland compositor
-- **[Waybar](https://github.com/Alexays/Waybar)** - Highly customizable Wayland bar
-- **[Hyprpaper](https://github.com/hyprwm/hyprpaper)** - Wallpaper utility for Hyprland
-- **[Hyprlock](https://github.com/hyprwm/hyprlock)** - Lock screen utility for Hyprland
-- **[Wofi](https://hg.sr.ht/~scoopta/wofi)** - Application launcher for Wayland
-- **[Wlogout](https://github.com/ArtsyMacaw/wlogout)** - Logout menu for Wayland
+- ** Menu Bar (Waybar)**: Modeled after the macOS menu bar with an Apple menu trigger, active application class display, centered date/time, and streamlined status indicators.
+- **🚥 Traffic Light Window Controls**: Integrated window titlebars using `hyprbars` with macOS-style close, minimize, and fullscreen buttons.
+- **🔍 Spotlight Launcher (Wofi)**: Centered, clean quick-launcher styled with frosted translucent acrylic backgrounds and Cupertino blue highlights.
+- **🖥️ Floating Dock (nwg-dock-hyprland)**: Autohiding bottom dock with rounded corners and subtle border translucency.
+- **🔒 Sonoma Lock Screen (Hyprlock)**: Minimalist lock screen featuring live desktop blur, bold typography, and a pill-shaped password entry.
+- **🧊 Liquid Glass Effects (Hyprglass & Blurring)**: Layered dual-pass gaussian blur, subtle specular highlights, and soft window drop shadows.
+- **⚡ Fluid Curves**: Custom smooth cubic bezier window animations (`0.25, 0.8, 0.25, 1`).
 
-## Dependencies
+---
 
-- Hyprland
-- Waybar
-- Hyprpaper
-- Hyprlock
-- Wofi
-- Wlogout
-- Kitty (terminal emulator)
-- Firefox
-- JetBrains Mono Nerd Font
-- grim (screenshot utility)
+## 🛠️ Components
 
-## Installation
+| Component | Role | Description |
+|-----------|------|-------------|
+| **[Hyprland](https://hyprland.org/)** | Compositor | Dynamic tiling Wayland compositor with fluid animations & blur |
+| **[Waybar](https://github.com/Alexays/Waybar)** | Menu Bar | macOS-style top status bar with Apple menu and app titles |
+| **[nwg-dock-hyprland](https://github.com/nwg-piotr/nwg-dock-hyprland)** | Dock | Smooth bottom application dock |
+| **[Wofi](https://hg.sr.ht/~scoopta/wofi)** | Launcher | Spotlight-inspired search and application launcher |
+| **[Hyprlock](https://github.com/hyprwm/hyprlock)** | Lock Screen | Fast, hardware-accelerated lock screen with desktop blur |
+| **[Hypridle](https://github.com/hyprwm/hypridle)** | Idle Daemon | Automatic screen dimming, lock, and DPMS sleep handling |
+| **[Hyprpaper](https://github.com/hyprwm/hyprpaper)** | Wallpaper | Wallpaper utility configured for macOS Sonoma wallpaper |
+| **[Wlogout](https://github.com/ArtsyMacaw/wlogout)** | Power Menu | Minimalist session menu (Lock, Log Out, Sleep, Restart, Shut Down) |
+| **[Hyprland Plugins](https://github.com/hyprwm/hyprland-plugins)** | Plugins | `hyprbars` (traffic lights) & `hyprglass` |
 
-1. Clone this repository:
-```bash
-git clone https://github.com/yourusername/hypr-config.git
-```
+---
 
-2. Create symbolic links to your config directory:
-```bash
-# Create necessary directories
-mkdir -p ~/.config/{hypr,waybar,wofi,wlogout}
+## 🎨 Color Palette & Typography
 
-# Link configurations
-ln -sf ~/path/to/repo/hypr/.config/hypr/* ~/.config/hypr/
-ln -sf ~/path/to/repo/waybar/.config/waybar/* ~/.config/waybar/
-ln -sf ~/path/to/repo/wofi/.config/wofi/* ~/.config/wofi/ 
-ln -sf ~/path/to/repo/wlogout/.config/wlogout/* ~/.config/wlogout/
-```
+Designed around macOS dark mode materials and system accent colors:
 
-3. Install the JetBrains Mono Nerd Font:
-```bash
-# Method may vary depending on distribution
-mkdir -p ~/.local/share/fonts
-# Download the font and place it in the directory
-fc-cache -f -v
-```
+| Token | Hex / Value | Purpose |
+|-------|-------------|---------|
+| **System Accent Blue** | `#0A84FF` | Active selection, spotlight focus, interactive highlights |
+| **Traffic Light Close** | `#FF5F57` | Titlebar close button, critical battery, disconnected status |
+| **Traffic Light Minimize**| `#FEBC2E` | Titlebar minimize button, battery warnings |
+| **Traffic Light Fullscreen**| `#28C840` | Titlebar fullscreen button, battery charging |
+| **Dark Glass Background** | `rgba(30, 30, 30, 0.55)` | Top bar, dock, dialogs, floating panels |
+| **Border Highlight** | `rgba(255, 255, 255, 0.15)` | Subtle translucent window & element borders |
+| **Typography** | **Inter** + **Symbols Nerd Font** | Primary UI font & status icons |
+| **Cursor Theme** | **WhiteSur-cursors** | macOS cursor theme |
 
-4. Make sure you have the wallpaper image at:
-```
-~/Pictures/wallpapers/Kath.png
-```
+---
 
-## Keybindings
+## ⌨️ Keybindings
 
-| Keybinding | Action |
-|------------|--------|
-| `Super + Return` | Open terminal (kitty) |
+### Applications & Controls
+
+| Shortcut | Action |
+|----------|--------|
+| `Super + Return` | Open Terminal ([kitty](https://sw.kovidgoyal.net/kitty/)) |
+| `Super + D` | Open Spotlight launcher (`wofi`) |
+| `Super + F` | Launch Firefox |
 | `Super + Q` | Close active window |
-| `Super + F` | Open Firefox |
-| `Super + Space` | Switch keyboard layout |
-| `Super + D` | Open application launcher (wofi) |
-| `Super + L` | Open logout menu (wlogout) |
-| `Print` | Take screenshot (saved to ~/Pictures/Screenshots/) |
-| `Super + 1-0` | Switch to workspace 1-10 |
-| `Super + Shift + 1-0` | Move active window to workspace 1-10 |
+| `Super + Shift + F` | Toggle fullscreen |
+| `Super + M` | Toggle minimized windows (special workspace) |
+| `Super + Space` | Cycle keyboard layout (CZ / US) |
+| `Super + L` | Open power menu (`wlogout`) |
+| `Super + Shift + A` | Toggle laptop display / lid mode |
 
-## Theme
+### Screenshots
 
-This configuration features a purple-themed color scheme with semi-transparent elements for a modern look. The theme is consistent across all components including the bar, application launcher, and logout menu.
+| Shortcut | Action |
+|----------|--------|
+| `Print` | Capture full screen to `~/Pictures/Screenshots/` |
+| `Super + Shift + S` | Interactive area screenshot copied to clipboard (`slurp` + `grim`) |
 
-### Color Palette
+### Workspaces
 
-- Primary Purple: `#B39DDB`
-- Secondary Purple: `#CE93D8`
-- Pink Accent: `#F48FB1`
-- Text: `#c0caf5`
-- Background: `rgba(26, 27, 38, 0.85)`
-- Active Border: `rgba(33ccffee)`
+| Shortcut | Action |
+|----------|--------|
+| `Super + 1..0` | Switch to workspace 1–10 |
+| `Super + Shift + 1..0` | Move active window to workspace 1–10 |
 
-## Configuration Details
+---
 
-### Hyprland
+## 📦 Dependencies
 
-The Hyprland configuration includes:
-- Dual monitor setup
-- Window gaps and rounded corners
-- Semi-transparent windows (80%)
-- Custom keybindings
+Ensure you have the following packages installed (Arch Linux / AUR):
 
-### Waybar
+```bash
+# Core Compositor & Wayland Utilities
+sudo pacman -S hyprland waybar hyprpaper hyprlock hypridle wofi wlogout kitty \
+               grim slurp wl-clipboard pavucontrol networkmanager brightnessctl
 
-The Waybar configuration includes modules for:
-- Workspaces
-- Active window
-- Clock
-- CPU usage
-- Memory usage
-- Network status
-- Audio controls
-- Battery status
-- System logout button
-- System tray
+# Dock & Theming
+paru -S nwg-dock-hyprland nwg-look-bin whitesur-cursor-theme-git ttf-inter ttf-nerd-fonts-symbols
+```
 
-### Lock Screen
+### Hyprland Plugins
 
-Hyprlock is configured with:
-- Blurred background wallpaper
-- Clock and date display
-- Clean input field for password
+This setup utilizes official plugins (`hyprbars` for window titlebars and traffic light buttons):
 
-### Application Launcher
+```bash
+# Initialize and install plugins via hyprpm
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprbars
+hyprpm reload
+```
 
-Wofi is configured with:
-- Matching purple theme
-- Fast search functionality
-- Clear typography
+---
 
-##  Customization
+## 🚀 Installation
 
-### Changing Wallpaper
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Olinkkt/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   ```
 
-1. Place your desired wallpaper in `~/Pictures/wallpapers/`
-2. Update the path in:
-   - `~/.config/hypr/hyprpaper.conf`
-   - `~/.config/hypr/hyprlock.conf` (if you want it as lock screen background)
+2. **Deploy dotfiles using GNU Stow (recommended):**
+   ```bash
+   stow hypr waybar wofi wlogout kitty nwg-dock-hyprland nwg-look
+   ```
+   *Or symlink manually to `~/.config/`:*
+   ```bash
+   mkdir -p ~/.config/{hypr,waybar,wofi,wlogout,kitty,nwg-dock-hyprland,nwg-look}
+   ln -sf ~/dotfiles/hypr/.config/hypr/* ~/.config/hypr/
+   ln -sf ~/dotfiles/waybar/.config/waybar/* ~/.config/waybar/
+   ln -sf ~/dotfiles/wofi/.config/wofi/* ~/.config/wofi/
+   ln -sf ~/dotfiles/wlogout/.config/wlogout/* ~/.config/wlogout/
+   ln -sf ~/dotfiles/kitty/.config/kitty/* ~/.config/kitty/
+   ln -sf ~/dotfiles/nwg-dock-hyprland/.config/nwg-dock-hyprland/* ~/.config/nwg-dock-hyprland/
+   ln -sf ~/dotfiles/nwg-look/.config/nwg-look/* ~/.config/nwg-look/
+   ```
 
-### Modifying Colors
+3. **Set the Wallpaper:**
+   Place your wallpaper at:
+   ```
+   ~/Pictures/wallpapers/sonoma.jpg
+   ```
+   *(Or adjust the path in [hyprpaper.conf](file:///home/oliver/dotfiles/hypr/.config/hypr/hyprpaper.conf).)*
 
-- Waybar colors: Edit `~/.config/waybar/style.css`
-- Wofi colors: Edit `~/.config/wofi/style.css`
-- Wlogout colors: Edit `~/.config/wlogout/style.css`
-- Hyprland border colors: Edit `~/.config/hypr/hyprland.conf`
+---
 
-## Screenshots
+## ⚙️ Customization
 
-![Desktop](screenshots/desktop.png)
-![Application Launcher](screenshots/wofi.png)
-![Logout Menu](screenshots/wlogout.png)
+- **Menu Bar**: Edit [waybar/config](file:///home/oliver/dotfiles/waybar/.config/waybar/config) and [waybar/style.css](file:///home/oliver/dotfiles/waybar/.config/waybar/style.css)
+- **Dock Appearance**: Adjust [nwg-dock-hyprland/style.css](file:///home/oliver/dotfiles/nwg-dock-hyprland/.config/nwg-dock-hyprland/style.css)
+- **Spotlight Search**: Modify [wofi/style.css](file:///home/oliver/dotfiles/wofi/.config/wofi/style.css)
+- **Window Decorations & Gaps**: Tweak borders, shadows, and animations in [hyprland.conf](file:///home/oliver/dotfiles/hypr/.config/hypr/hyprland.conf)
+- **Lock Screen**: Customize clock format and blur intensity in [hyprlock.conf](file:///home/oliver/dotfiles/hypr/.config/hypr/hyprlock.conf)
 
-## Credits
+---
 
-- Fonts: [JetBrains Mono Nerd Font](https://www.nerdfonts.com/)
-- Icons: System default and Nerd Font icons
+## 📄 License
 
-## License
-
-This configuration is available under the MIT License. Feel free to use, modify, and share!
+This configuration is open source and available under the [MIT License](LICENSE).
