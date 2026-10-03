@@ -1,0 +1,32 @@
+/* ~/.config/wlogout/style.css */
+* {
+    background-image: none;
+    box-shadow: none;
+    font-family: "Inter";
+}
+
+window { background-color: rgba(20, 20, 20, 0.55); }
+
+button {
+    color: #ffffff;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 22px;
+    margin: 12px;
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    background-size: 25%;
+    padding-top: 90px;
+}
+
+button:hover, button:focus {
+    background-color: rgba(10, 132, 255, 0.85);
+    outline: none;
+}
+
+#lock     { background-image: image(url("/usr/share/wlogout/icons/lock.png")); }
+#logout   { background-image: image(url("/usr/share/wlogout/icons/logout.png")); }
+#suspend  { background-image: image(url("/usr/share/wlogout/icons/suspend.png")); }
+#reboot   { background-image: image(url("/usr/share/wlogout/icons/reboot.png")); }
+#shutdown { background-image: image(url("/usr/share/wlogout/icons/shutdown.png")); }

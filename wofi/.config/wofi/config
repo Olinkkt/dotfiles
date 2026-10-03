@@ -1,15 +1,10 @@
-width=500
-height=400
-mode=drun,run
-prompt=Search...
-filter_rate=100
-allow_markup=true
-no_actions=true
-halign=left
-orientation=vertical
-content_halign=left
-insensitive=true
+# ~/.config/wofi/config
+width=600
+height=360
+location=center
+show=drun
+prompt=Spotlight
+hide_scroll=true
 allow_images=true
-image_size=24
-gtk_dark=true
-term=kitty
+image_size=28
+insensitive=true
