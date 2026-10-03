@@ -110,7 +110,29 @@ hyprpm reload
 
 ---
 
-## 🚀 Installation
+## 🚀 Quick Installation (Automated)
+
+The easiest way to install everything (dependencies, AUR packages, plugins, fonts, scripts, and dotfiles) is with the automated install script:
+
+```bash
+git clone https://github.com/Olinkkt/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+chmod +x install.sh
+./install.sh
+```
+
+The script will:
+- Back up any existing `~/.config` configurations safely.
+- Install official packages (`pacman`) and AUR packages (`yay`/`paru`).
+- Set up and build `hyprpm` plugins (`hyprbars` traffic lights, `dynamic-cursors`, `hyprglass`).
+- Deploy the Sonoma wallpaper and helper scripts (`lid-toggle`, `weather`).
+- Stow dotfiles directly to `~/.config/`.
+
+---
+
+### 🛠️ Manual Installation
+
+If you prefer to install manually:
 
 1. **Clone the repository:**
    ```bash
@@ -118,13 +140,13 @@ hyprpm reload
    cd ~/dotfiles
    ```
 
-2. **Deploy dotfiles using GNU Stow (recommended):**
+2. **Deploy dotfiles using GNU Stow:**
    ```bash
-   stow hypr waybar wofi wlogout kitty nwg-dock-hyprland nwg-look
+   stow hypr waybar wofi wlogout kitty nwg-dock-hyprland nwg-look bin
    ```
    *Or symlink manually to `~/.config/`:*
    ```bash
-   mkdir -p ~/.config/{hypr,waybar,wofi,wlogout,kitty,nwg-dock-hyprland,nwg-look}
+   mkdir -p ~/.config/{hypr,waybar,wofi,wlogout,kitty,nwg-dock-hyprland,nwg-look} ~/.local/bin
    ln -sf ~/dotfiles/hypr/.config/hypr/* ~/.config/hypr/
    ln -sf ~/dotfiles/waybar/.config/waybar/* ~/.config/waybar/
    ln -sf ~/dotfiles/wofi/.config/wofi/* ~/.config/wofi/
@@ -132,14 +154,14 @@ hyprpm reload
    ln -sf ~/dotfiles/kitty/.config/kitty/* ~/.config/kitty/
    ln -sf ~/dotfiles/nwg-dock-hyprland/.config/nwg-dock-hyprland/* ~/.config/nwg-dock-hyprland/
    ln -sf ~/dotfiles/nwg-look/.config/nwg-look/* ~/.config/nwg-look/
+   ln -sf ~/dotfiles/bin/.local/bin/* ~/.local/bin/
    ```
 
-3. **Set the Wallpaper:**
-   Place your wallpaper at:
+3. **Install the wallpaper:**
+   ```bash
+   mkdir -p ~/Pictures/wallpapers
+   cp ~/dotfiles/wallpapers/sonoma.jpg ~/Pictures/wallpapers/sonoma.jpg
    ```
-   ~/Pictures/wallpapers/sonoma.jpg
-   ```
-   *(Or adjust the path in [hyprpaper.conf](file:///home/oliver/dotfiles/hypr/.config/hypr/hyprpaper.conf).)*
 
 ---
 

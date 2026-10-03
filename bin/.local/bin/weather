@@ -1,0 +1,22 @@
+#!/bin/bash
+data=$(curl -sf --max-time 5 'wttr.in/?format=%C|%t&m') || exit 0
+cond=${data%%|*}
+temp=${data##*|}
+temp=${temp//+/}
+
+hour=$(date +%H)
+night=0
+{ [ "$hour" -ge 20 ] || [ "$hour" -lt 6 ]; } && night=1
+
+case "${cond,,}" in
+    *thunder*)                          icon=$'\U000F067E' ;;
+    *snow*|*sleet*|*blizzard*|*ice*)    icon=$'\U000F0598' ;;
+    *heavy*|*shower*|*torrential*)      icon=$'\U000F0596' ;;
+    *rain*|*drizzle*)                   icon=$'\U000F0597' ;;
+    *fog*|*mist*)                       icon=$'\U000F0591' ;;
+    *partly*)                           icon=$'\U000F0595' ;;
+    *cloudy*|*overcast*)                icon=$'\U000F0590' ;;
+    *)  [ "$night" = 1 ] && icon=$'\U000F0594' || icon=$'\U000F0599' ;;
+esac
+
+printf '%s %s\n' "$icon" "$temp"
