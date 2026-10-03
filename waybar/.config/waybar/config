@@ -1,84 +1,103 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
-    "spacing": 8,
-    "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
-    
+    "height": 28,
+    "spacing": 0,
+
     "modules-left": [
-	"hyprland/workspaces",
-        "hyprland/window"
+        "custom/wlogout",
+        "hyprland/window",
+        "hyprland/workspaces"
     ],
-    
+
     "modules-center": [
         "clock"
     ],
-    
+
     "modules-right": [
-        "cpu",
+	"custom/lid",
+        "custom/weather",
+	"cpu",
         "memory",
         "network",
         "pulseaudio",
         "battery",
-	"custom/wlogout",
         "tray"
     ],
+
+    "custom/wlogout": {
+        "format": "\uf179",
+        "on-click": "wlogout -b 5 -c 10 -T 350 -B 350 -L 200 -R 200",
+        "tooltip": false
+    },
+  
+    "custom/lid": {
+    	"exec": "~/.local/bin/lid-toggle status",
+    	"signal": 8,
+    	"interval": 30,
+    	"on-click": "~/.local/bin/lid-toggle",
+    	"tooltip": false
+    },
     
+    "custom/weather": {
+    	"exec": "~/.local/bin/weather",
+    	"interval": 900,
+    	"tooltip": false,
+    	"on-click": "kitty --hold -e curl -s 'wttr.in/?m'"
+    },
 
     "hyprland/window": {
-        "format": "❤  {}",
-        "max-length": 50,
-        "separate-outputs": true
+        "format": "{class}",
+        "max-length": 40,
+        "separate-outputs": true,
+    	    "rewrite": {
+        	"firefox": "Firefox",
+        	"kitty": "Terminal"
+    	}
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "show-special": false,
+        "persistent-workspaces": [],
+        "active-only": true
     },
 
-    "hyprland/workspaces": {
-   	 "format": "{name}",
-   	 "on-click": "activate",
- 	 "show-special": false,
- 	 "persistent-workspaces": [],
- 	 "active-only": true
-   },
-    
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%a %d %b  %H:%M}"
     },
-    
+
     "cpu": {
-        "interval": 1,
+        "interval": 2,
         "format": "\uf4bc {usage}%",
         "on-click": "kitty -e htop",
-	"tooltip": false
+        "tooltip": false
     },
-    
+
     "memory": {
-        "interval": 1,
+        "interval": 5,
         "format": "\uefc5 {percentage}%",
         "format-alt": "\uefc5 {used:0.1f}GB",
         "tooltip": false
     },
-    
+
     "network": {
-        "format-wifi": "\udb81\udda9 {essid}",
-        "format-ethernet": "\uef44 {ifname}",
-        "format-disconnected": "\udb81\uddaa Disconnected",
-        "format-linked": " {ifname} (No IP)",
-        "tooltip-format": " {ifname}\nIP: {ipaddr}/{cidr}\nSignal: {signalStrength}%\nFreq: {frequency}MHz",
-        "tooltip-format-wifi": " {essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}",
-        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}/{cidr}",
+        "format-wifi": "\udb81\udda9",
+        "format-ethernet": "\uef44",
+        "format-disconnected": "\udb81\uddaa",
+        "format-linked": "\uef44 (No IP)",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}\nIP: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Disconnected",
         "on-click": "kitty -e nmtui"
     },
- 
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "\udb81\udd81 Muted",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "\udb81\udd81 Muted",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-	"tooltip": false,
+        "format-muted": "\udb81\udd81",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "\udb81\udd81",
+        "tooltip": false,
         "format-icons": {
             "headphone": "\udb80\udecb",
             "headset": "\udb80\udece",
@@ -88,26 +107,19 @@
         "on-click": "pavucontrol",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
-    
+
     "battery": {
-        "interval": 1,
+        "interval": 30,
         "states": {
             "good": 50,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "\udb80\udc84 {capacity}%",
-        "format-plugged": "\udb81\udea5 {capacity}%",
-        "format-alt": "{icon} {time}",
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% \udb80\udc84",
+        "format-plugged": "{capacity}% \udb81\udea5",
+        "format-alt": "{time} {icon}",
         "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82", "\udb80\udc79"]
-    },
-    
-
-    "custom/wlogout": {
-	"format": "\udb81\udc25",
-	"on-click": "wlogout",
-	"tooltip": false
     },
 
     "tray": {

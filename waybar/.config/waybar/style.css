@@ -1,15 +1,28 @@
 * {
-    font-family: "JetBrains Mono", "Symbols Nerd Font", sans-serif;
-    font-size: 14px;
+    font-family: "Inter", "Symbols Nerd Font", sans-serif;
+    font-size: 13px;
     font-weight: normal;
-    transition: all 0.3s ease;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    transition: all 0.2s ease;
 }
 
 window#waybar {
-    background: transparent;
-    color: #c0caf5;
+    background: rgba(30, 30, 30, 0.55);
+    color: #ffffff;
 }
 
+window#waybar.empty #window,
+#window.empty {
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+#custom-wlogout,
+#custom-lid,
+#custom-weather,
 #window,
 #workspaces,
 #clock,
@@ -19,113 +32,54 @@ window#waybar {
 #pulseaudio,
 #battery,
 #tray {
-    background: rgba(26, 27, 38, 0.85);
-    border-radius: 8px;
-    margin: 4px 0;
+    background: transparent;
+    color: #ffffff;
     padding: 0 10px;
-    color: #c0caf5;
+    margin: 0;
 }
 
+/* Apple menu */
+#custom-wlogout {
+    font-size: 16px;
+    padding: 0 14px;
+}
 
-/* Window */
+/* Active app name, bold like macOS */
 #window {
-    background: rgba(26, 27, 38, 0.85);
-    margin-left: 0;
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    color: #D1C4E9;
+    font-weight: bold;
 }
 
 #workspaces {
-	background: rgba(26, 27, 38, 0.85);
-	margin-left: 0;
-	margin-right: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	color: #D1C4E9;
+    color: rgba(255, 255, 255, 0.6);
 }
 
-/* Clock */
 #clock {
-    background: rgba(26, 27, 38, 0.85);
-    font-weight: bold;
-    color: #B39DDB;
+    font-weight: 500;
 }
 
-/* System modules */
-#cpu {
-    background: rgba(26, 27, 38, 0.85);
-    color: #B5A7D9;
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
+/* Hover highlight like the macOS menu bar */
+#custom-wlogout:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
 }
 
-#memory {
-    background: rgba(26, 27, 38, 0.85);
-    color: #F48FB1;
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
-}
+/* States */
+#network.disconnected { color: #ff453a; }
+#pulseaudio.muted     { color: #ff453a; }
 
-#network {
-    background: rgba(26, 27, 38, 0.85);
-    color: #B39DDB;
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
-}
+#battery.good         { color: #ffffff; }
+#battery.charging     { color: #30d158; }
+#battery.warning      { color: #ffd60a; }
+#battery.critical     { color: #ff453a; }
 
-#network.disconnected {
-    color: #F44336;
+#tray > .passive {
+    -gtk-icon-effect: dim;
 }
-
-#pulseaudio {
-    background: rgba(26, 27, 38, 0.85);
-    color: #CE93D8;
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
-}
-
-#pulseaudio.muted {
-    color: #F44336;
-}
-
-#battery {
-    background: rgba(26, 27, 38, 0.85);
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
-}
-
-#battery.good {
-    color: #B3E5FC;
-}
-
-#battery.warning {
-    color: #FFEB3B;
-}
-
-#battery.critical {
-    color: #F44336;
-}
-
-#battery.charging {
-    color: #80D6FF;
-}
-
-#custom-wlogout {
-    color: #B3E5FC;
-    padding-left: 14px;
-    padding-right: 14px;
-    margin-right: 8px;
-}
-
-#tray {
-    background: rgba(26, 27, 38, 0.85);
-    padding-left: 10px;
-    padding-right: 10px;
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
 }
