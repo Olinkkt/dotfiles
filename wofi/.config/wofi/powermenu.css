@@ -1,0 +1,49 @@
+/* Powermenu macOS theme */
+window {
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+}
+
+#input {
+    all: unset;
+    min-height: 0px;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    opacity: 0;
+}
+
+#outer-box {
+    margin: 10px;
+    padding: 0px;
+}
+
+#inner-box {
+    margin: 0px;
+    padding: 0px;
+}
+
+#entry {
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin: 2px 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#entry:selected {
+    background-color: #007aff;
+    outline: none;
+}
+
+#text {
+    color: #ffffff;
+    margin-left: 6px;
+}
+
+#text:selected {
+    color: #ffffff;
+}
