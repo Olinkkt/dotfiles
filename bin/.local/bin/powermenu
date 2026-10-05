@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# macOS-styled session actions
+entries="  Lock
+  Sleep
+󰍃  Log Out
+  Restart
+  Shut Down"
+
+# Detect focused monitor correctly
+FOCUSED_MONITOR=$(hyprctl monitors 2>/dev/null | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
+
+chosen=$(printf "%b\n" "$entries" | wofi \
+    --dmenu \
+    ${FOCUSED_MONITOR:+--monitor "$FOCUSED_MONITOR"} \
+    --conf "$HOME/.config/wofi/powermenu.conf" \
+    --style "$HOME/.config/wofi/powermenu.css" \
+    --cache-file /dev/null)
+
+case "$chosen" in
+    *"Lock"*)
+        loginctl lock-session
+        ;;
+    *"Sleep"*)
+        systemctl suspend
+        ;;
+    *"Log Out"*)
+        hyprctl dispatch exit
+        ;;
+    *"Restart"*)
+        systemctl reboot
+        ;;
+    *"Shut Down"*)
+        systemctl poweroff
+        ;;
+esac
